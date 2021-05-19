@@ -43,3 +43,11 @@ address{
     flex: 1;
     margin-left: 2rem;
 }
+
+.bottom-space {
+    margin-bottom: 1rem;
+}
+
+.in-between {
+    margin-top: 0.3rem;
+}
