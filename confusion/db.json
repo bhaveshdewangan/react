@@ -209,6 +209,14 @@
       "comment": "Nice dish",
       "date": "2021-05-20T15:38:20.963Z",
       "id": 20
+    },
+    {
+      "dishId": 0,
+      "rating": "5",
+      "author": "Bhaveh BV",
+      "comment": "Very Nice Dish",
+      "date": "2021-06-06T12:13:09.636Z",
+      "id": 21
     }
   ],
   "promotions": [
