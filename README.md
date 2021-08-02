@@ -1,5 +1,5 @@
 
-# clone or download recar module in your local machine and follow the below instructions to play around with react stuff
+# clone or download React module in your local machine and follow the below instructions to play around with react stuff
 
 ## Prerequisite 
 
