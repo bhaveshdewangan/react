@@ -6,6 +6,8 @@ import React, { Component } from 'react';
 import { Loading } from './LoadingComponent'
 import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+import Experiment1 from './experiments/Experiment1'
+import Experiment2 from './experiments/Experiment2'
 
 const required = (val) => val && val.length
 const minLength = (len) => (val) => !(val) || (val.length >= len);
@@ -16,16 +18,39 @@ export class CommentForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isModalOpen: false
+            isModalOpen: false,
+            dummyVar: 0
         }
-        this.toggleModal = this.toggleModal.bind(this);
+
+        // this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this)
+
     }
 
     toggleModal() {
         this.setState({
             isModalOpen: !this.state.isModalOpen
         })
+        // this.setState({dummyVar: this.state.dummyVar + 1})
+        // this.setState({dummyVar: this.state.dummyVar + 1})
+        // this.setState({dummyVar: this.state.dummyVar + 1})
+
+        this.setState((state) => {
+            console.log("FIRST SET STATE - 1", state);
+            return { dummyVar: state.dummyVar + 1 }
+        });
+        this.setState((state) => {
+            console.log("FIRST SET STATE - 2", state);
+            return { dummyVar: state.dummyVar + 1 }
+        });
+        this.setState((state) => {
+            console.log("FIRST SET STATE - 3", state);
+            return { dummyVar: state.dummyVar + 1 }
+        });
+        console.log(this.state.dummyVar);
+        setTimeout(() => {
+            console.log("AFTER TIME OUT", this.state.dummyVar);
+        }, 3000)
     }
 
     handleSubmit(values) {
@@ -35,13 +60,17 @@ export class CommentForm extends Component {
         // alert('Current State is: ' + JSON.stringify(values));
     }
 
+    testClickFn() {
+        console.log(this, this.children, this.tag, this.state);
+    }
+
     render() {
         return (
             <div>
-                <Button outline onClick={this.toggleModal}><span className="fa fa-pencil fa-lg"></span> Submit Comment</Button>
-                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
-                    <ModalBody toggle={this.toggleModal}>
+                <Button outline onClick={() => this.toggleModal()}><span className="fa fa-pencil fa-lg"></span> Submit Comment</Button>
+                <Modal isOpen={this.state.isModalOpen} toggle={() => this.toggleModal()}>
+                    <ModalHeader toggle={() => this.toggleModal()}>Submit Comment</ModalHeader>
+                    <ModalBody toggle={() => this.toggleModal()}>
                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className='farm-group  bottom-space'>
                                 <Label htmlFor='yourname'>Your Name</Label>
@@ -185,7 +214,13 @@ export const DishDetail = (props) => {
                         <CommentForm dishId={props.dish.id} postComment={props.postComment} />
                     </div>
                 </div>
-            </div>
+                <div className="row">
+                    <div className="col-12 col-md-5 m-1">
+                        <Experiment1 />
+                        <Experiment2 />
+                    </div>
+                </div>
+            </div >
         );
     } else {
         return (
